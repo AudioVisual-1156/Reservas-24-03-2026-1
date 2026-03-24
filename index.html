@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabela de Reservas Interativa</title>
+  <style>
+    /* Estilos gerais */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0 10px 40px 10px;
+      background-color: #f9f9f9;
+    }
+    
+    h1 {
+      color: #00008B;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .search-container {
+      margin: 20px auto;
+      width: 70%;
+    }
+
+    #searchInput {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      box-sizing: border-box;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .bloco-container {
+        width: 75%;
+        margin: 10px auto;
+        text-align: left;
+    }
+
+    .bloco-header {
+      color: #00008B;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 0;
+      padding: 15px;
+      background-color: #e7e7ff;
+      border: 1px solid #ddd;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .bloco-header:hover {
+      background-color: #d8d8ff;
+    }
+
+    .bloco-header::after {
+      content: '\002B';
+      font-size: 20px;
+      font-weight: bold;
+      color: #00008B;
+      transition: transform 0.2s;
+    }
+
+    .bloco-header.active::after {
+      content: "\2212";
+    }
+
+    .content {
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-top: none;
+    }
+
+    /* Ajuste Técnico: Permite expansão total sem cortes */
+    .content.show {
+      max-height: none;
+    }
+
+    .table-scroll-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: auto;
+    }
+    
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      vertical-align: top;
+      word-wrap: break-word;
+    }
+    
+    th {
+      background-color: #00008B;
+      color: white;
+      text-align: left;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    /* Colunas em AZUL e NEGRITO conforme solicitado */
+    td {
+      background-color: white;
+      color: #00008B;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    td:nth-child(1) {
+      width: 120px;
+      white-space: nowrap;
+    }
+    
+    td:nth-child(2) {
+      width: 200px;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tbody tr:hover {
+      background-color: #e0e0ff;
+    }
+
+    @media screen and (max-width: 768px) {
+      .bloco-container, .search-container { width: 98%; }
+      td, th { padding: 8px; font-size: 12px; }
+      td:nth-child(1) { width: 90px; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Reservas - DIA 24/03/2026</h1>
+  
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Buscar por sala, horário, bloco ou auditório...">
+  </div>
+
+  <!-- BLOCO 6 -->
+  <div class="bloco-container">
+    <div class="bloco-header">Bloco 6</div>
+    <div class="content">
+      <div class="table-scroll-wrapper">
+        <table>
+          <thead>
+            <tr><th>Horário</th><th>Local</th><th>Observação</th><th>Insumos</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>07:30 - 22:30</td><td>Sala 10</td><td></td><td></td></tr>
+            <tr><td>08:00 - 09:30</td><td>Auditório Prof. Joaquim Lauer</td><td>Apresentação 2°série </td><td></td></tr>
+            <tr><td>08:00 - 11:30</td><td>Sala 11</td><td></td><td></td></tr>
+            <tr><td>08:00 - 11:30</td><td>Sala 12</td><td></td><td></td></tr>
+            <tr><td>10:00 - 12:00</td><td>Auditório Prof. Joaquim Lauer</td><td>Leonardo 3P12</td><td></td></tr>
+            <tr><td>13:30 - 15:30</td><td>Auditório Prof. Joaquim Lauer</td><td>Montagem de Evento</td><td></td></tr>
+            <tr><td>13:30 - 17:30</td><td>Sala 11</td><td></td><td></td></tr>
+            <tr><td>15:00 - 17:00</td><td>Sala 12</td><td></td><td></td></tr>
+            <tr><td>17:00 - 19:00</td><td>Auditório Prof. Joaquim Lauer</td><td>AULA DE EMPREENDEDORISMO - 6ºP9 - PROFESSOR LEANDRO</td><td></td></tr>
+            <tr><td>18:00 - 21:00</td><td>Auditório de Medicina</td><td>Aula TCC</td><td></td></tr>
+            <tr><td>18:00 - 22:00</td><td>Sala 11</td><td></td><td></td></tr>
+            <tr><td>18:00 - 22:00</td><td>Sala 12</td><td></td><td></td></tr>
+            <tr><td>18:30 - 21:00</td><td>Auditório de Odontologia</td><td>Palestra Fisioterapia Esportiva - Prof Michele</td><td></td></tr>
+            <tr><td>19:00 - 20:30</td><td>Auditório Prof. Joaquim Lauer</td><td>Bruno - 3P12</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 7 -->
+  <div class="bloco-container">
+    <div class="bloco-header">Bloco 7</div>
+    <div class="content">
+      <div class="table-scroll-wrapper">
+        <table>
+          <thead>
+            <tr><th>Horário</th><th>Local</th><th>Observação</th><th>Insumos</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>08:00 - 10:00</td><td>Sala 44</td><td></td><td></td></tr>
+            <tr><td>08:00 - 11:00</td><td>Sala 26</td><td></td><td></td></tr>
+            <tr><td>08:00 - 12:00</td><td>Sala 43</td><td></td><td></td></tr>
+            <tr><td>08:00 - 18:00</td><td>Sala 19</td><td></td><td></td></tr>
+            <tr><td>08:30 - 11:30</td><td>Auditório Dorival Moreschi</td><td>Realização colaboradores EAD/</td><td></td></tr>
+            <tr><td>13:30 - 16:00</td><td>Sala 31</td><td></td><td></td></tr>
+            <tr><td>13:30 - 17:00</td><td>Auditório Dona Etelvina</td><td></td><td></td></tr>
+            <tr><td>13:30 - 17:30</td><td>Sala 44</td><td></td><td></td></tr>
+            <tr><td>14:00 - 16:30</td><td>Sala Stephen Hawking</td><td>BANCA DE DEFESA DA LIGIA YURIE - GC</td><td></td></tr>
+            <tr><td>14:00 - 17:00</td><td>Sala 43</td><td></td><td></td></tr>
+            <tr><td>15:00 - 16:00</td><td>Sala 35</td><td></td><td></td></tr>
+            <tr><td>15:30 - 19:30</td><td>Sala 45</td><td></td><td></td></tr>
+            <tr><td>16:30 - 18:30</td><td>Sala 34</td><td></td><td></td></tr>
+            <tr><td>16:30 - 18:30</td><td>Sala 54</td><td></td><td></td></tr>
+            <tr><td>17:00 - 18:30</td><td>Sala 26</td><td></td><td></td></tr>
+            <tr><td>17:00 - 18:30</td><td>Sala 46</td><td></td><td></td></tr>
+            <tr><td>17:00 - 19:00</td><td>Auditório Dorival Moreschi</td><td>AULA DE EMPREENDEDORISMO - INTERNATO</td><td></td></tr>
+            <tr><td>17:30 - 18:30</td><td>Sala 20/21</td><td></td><td></td></tr>
+            <tr><td>17:30 - 19:00</td><td>Sala 40</td><td></td><td></td></tr>
+            <tr><td>19:00 - 20:30</td><td>Sala 44</td><td></td><td></td></tr>
+            <tr><td>19:30 - 21:30</td><td>Sala 45</td><td></td><td></td></tr>
+            <tr><td>20:30 - 22:00</td><td>Sala 44</td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 8 -->
+  <div class="bloco-container">
+    <div class="bloco-header">Bloco 8</div>
+    <div class="content">
+      <div class="table-scroll-wrapper">
+        <table>
+          <thead>
+            <tr><th>Horário</th><th>Local</th><th>Observação</th><th>Insumos</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>17:30 - 19:00</td><td>Sala 03</td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 10 -->
+  <div class="bloco-container">
+    <div class="bloco-header">Bloco 10</div>
+    <div class="content">
+      <div class="table-scroll-wrapper">
+        <table>
+          <thead>
+            <tr><th>Horário</th><th>Local</th><th>Observação</th><th>Insumos</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>08:00 - 12:00</td><td>Sala 27</td><td></td><td></td></tr>
+            <tr><td>08:00 - 22:30</td><td>Sala 1</td><td></td><td></td></tr>
+            <tr><td>08:00 - 22:30</td><td>Sala 26</td><td></td><td></td></tr>
+            <tr><td>09:00 - 10:30</td><td>Sala 23</td><td></td><td></td></tr>
+            <tr><td>14:00 - 17:00</td><td>Auditório Carlos Alexandre</td><td>Reunião Pró-Reitora EAD - Prof Waleria Henrique/Felipe Laureano</td><td></td></tr>
+            <tr><td>14:00 - 17:00</td><td>Sala 25</td><td></td><td></td></tr>
+            <tr><td>19:00 - 22:30</td><td>Auditório Carlos Alexandre</td><td>Aula ADM/PGER/CCONT 1S-na</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const headers = document.querySelectorAll('.bloco-header');
+  
+  headers.forEach(header => {
+    header.addEventListener('click', function() {
+      const content = this.nextElementSibling;
+      this.classList.toggle('active');
+      
+      if (content.classList.contains('show')) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.classList.remove('show');
+        setTimeout(() => {
+          content.style.maxHeight = '0px';
+        }, 10);
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        setTimeout(() => {
+          content.classList.add('show');
+        }, 400);
+      }
+    });
+  });
+
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('keyup', function() {
+      const filter = searchInput.value.toLowerCase();
+      const containers = document.querySelectorAll('.bloco-container');
+      
+      containers.forEach(container => {
+        let hasVisibleRows = false;
+        const rows = container.querySelectorAll('tbody tr');
+        const header = container.querySelector('.bloco-header');
+        const content = container.querySelector('.content');
+
+        rows.forEach(row => {
+          const text = row.textContent.toLowerCase();
+          if (text.includes(filter)) {
+            row.style.display = '';
+            hasVisibleRows = true;
+          } else {
+            row.style.display = 'none';
+          }
+        });
+
+        if (hasVisibleRows) {
+          container.style.display = '';
+          if (filter !== '' && !header.classList.contains('active')) {
+              header.classList.add('active');
+              content.style.maxHeight = content.scrollHeight + 'px';
+              setTimeout(() => {
+                content.classList.add('show');
+              }, 400);
+          }
+        } else {
+          if (filter !== '') {
+             container.style.display = 'none';
+          }
+        }
+
+        if (filter === '') {
+            header.classList.remove('active');
+            content.classList.remove('show');
+            content.style.maxHeight = '0px';
+            container.style.display = ''; 
+            rows.forEach(row => row.style.display = '');
+        }
+      });
+    });
+  }
+});
+</script>
+
+</body>
+</html>
